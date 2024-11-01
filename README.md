@@ -50,7 +50,7 @@ Each demo can be run independently in MATLAB. Ensure all paths are set correctly
 
 ### Customizing the Demos
 
-Each demo script includes customizable parameters such as `example_id` (for dataset selection), `n_layers` (number of clustering layers), and `dist_type` (distance metric for clustering). Adjust these parameters at the beginning of each script to suit your specific requirements.
+Each demo script includes customizable parameters such as `example_id` (for dataset selection),  and `dist_type` (distance metric for clustering). Adjust these parameters at the beginning of each script to suit your specific requirements.
 
 ## Output
 
