@@ -1,4 +1,4 @@
-# EW2LG Clustering Demos
+# Extracting the Whole from Twice Local Glimpses: a Framework for Clustering and Visualization
 
 This repository provides three demo scripts to showcase the use of the **EW2LG** (Extracting the Whole from Twice Local Glimpses) clustering algorithm on various datasets, both simulated and real-world. The demos include data preprocessing, clustering with EW2LG, and visualization of clustering results. These scripts are designed to help users understand the application of EW2LG in different scenarios and visualize its performance.
 
