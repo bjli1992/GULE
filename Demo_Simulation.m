@@ -1,5 +1,5 @@
 addpath(genpath('Data')); % Add paths to the 'Data' directory and its subdirectories
-addpath(genpath('EW2LG')); % Add paths to the 'EW2LG' directory and its subdirectories
+addpath(genpath('GULE')); % Add paths to the 'GULE' directory and its subdirectories
 addpath(genpath('Tool')); % Add paths to the 'Tool' directory and its subdirectories
 load('Color4Figs.mat'); % Load color information for figures
 rng default; % Set the random number generator to the default state for reproducibility
@@ -37,7 +37,7 @@ fprintf('Data: %s\n', data);
 % Select the appropriate distance metric for clustering based on normalization setting
 dist_type = dist_types{isnormal + 1};
 
-% Set options for the EW2LG algorithm, including various parameters for projection and clustering
+% Set options for the GULE algorithm, including various parameters for projection and clustering
 opts = struct('ab', [2 * ones(2, 1), [1; 0]], ... % Parameters for adaptive spectral projection
               'labels', labels, ... % Ground truth labels
               'distmetric', dist_type, ... % Distance metric to use
@@ -47,9 +47,9 @@ opts = struct('ab', [2 * ones(2, 1), [1; 0]], ... % Parameters for adaptive spec
               'func', 'db/(sc*ch)', ... % Function used for evaluating clustering performance
               'repa', 1); % Parameter for reparameterization
 
-% Run the EW2LG algorithm to perform clustering on the dataset
-[criteria, Idx] = EW2LG(X, n_class, opts);
-idx = Idx(:, end); % Get the final clustering result from the EW2LG output
+% Run the GULE algorithm to perform clustering on the dataset
+[criteria, Idx] = GULE(X, n_class, opts);
+idx = Idx(:, end); % Get the final clustering result from the GULE output
 
 % Calculate performance metrics for the clustering result
 tic; % Start timer to measure elapsed time
@@ -89,4 +89,4 @@ yticklabels({}); % Remove y-axis tick labels
 % Set axis limits for the predicted class labels plot based on the dataset
 xlim(xlim_values{example_id}); % Set x-axis limits for the plot
 ylim(ylim_values{example_id}); % Set y-axis limits for the plot
-title('EW2LG'); % Set title for the plot of predicted class labels
+title('GULE'); % Set title for the plot of predicted class labels

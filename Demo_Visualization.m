@@ -1,6 +1,6 @@
 % Add required paths
 addpath(genpath('Data'));          % Add Data directory and its subdirectories to path
-addpath(genpath('EW2LG'));        % Add EW2LG algorithm directory
+addpath(genpath('GULE'));        % Add GULE algorithm directory
 addpath(genpath('Tool'));         % Add Tools directory
 rng default;                      % Set random number generator for reproducibility
 warning off;                      % Suppress warnings
@@ -35,12 +35,12 @@ elseif isnormal == 4
     dist_type = 'nm_euclidean';
 end
 
-% Set up EW2LG parameters
+% Set up GULE parameters
 n_layers = 2;                     % Number of layers in the graph
 fprintf('n_layer: %2d\n',n_layers)
 ab = [2*ones(n_layers,1),[1;zeros(n_layers-1,1)]];  % Layer weights
 
-% Configure options for EW2LG algorithm
+% Configure options for GULE algorithm
 opts.ab = ab;                     % Set layer weights
 opts.labels = labels;             % Provide ground truth labels
 opts.distmetric = dist_type;      % Set distance metric
@@ -50,8 +50,8 @@ opts.classsize = m_;              % Expected class size
 opts.func = 'db/(sc*ch)';         % Objective function
 opts.repa = 1;                    % Repeat parameter
 
-% Run EW2LG algorithm
-[criteria,idx,Y,U] = EW2LG(X,n_class,opts);
+% Run GULE algorithm
+[criteria,idx,Y,U] = GULE(X,n_class,opts);
 pred_groups = idx;                % Store predicted groups
 
 % Visualization: Original Data (Left subplot)
@@ -68,7 +68,7 @@ ylabel('t-SNE 2');
 ax = gca;
 ax.LineWidth = 1.5;
 
-% Visualization: EW2LG Results (Right subplot)
+% Visualization: GULE Results (Right subplot)
 subplot(1,2,2);
 % Combine original and learned distances
 Dx = pdist2(X',X',dist_types{nmlzs_v(example_id)});  % Original distance matrix
@@ -80,8 +80,8 @@ Z = tsne_d(D);                    % Apply t-SNE
 gscatter(Z(:,1),Z(:,2),gnd);     % Scatter plot colored by ground truth
 legend off;
 si_v = silhouette(Z,gnd);        % Calculate silhouette score
-title([data,', EW2LG, SI = ',num2str(mean(si_v),2)]);  % Title with silhouette score
-title([data,', EW2LG']);         % Simple title
+title([data,', GULE, SI = ',num2str(mean(si_v),2)]);  % Title with silhouette score
+title([data,', GULE']);         % Simple title
 box off;
 xlabel('t-SNE 1');
 ylabel('t-SNE 2');

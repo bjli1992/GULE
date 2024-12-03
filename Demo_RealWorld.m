@@ -1,5 +1,5 @@
 addpath(genpath('Data')); % Add paths to the 'Data' directory and its subdirectories
-addpath(genpath('EW2LG')); % Add paths to the 'EW2LG' directory and its subdirectories
+addpath(genpath('GULE')); % Add paths to the 'GULE' directory and its subdirectories
 addpath(genpath('Tool')); % Add paths to the 'Tool' directory and its subdirectories
 load('Color4Figs.mat'); % Load predefined color schemes for visualizing figures
 rng default; % Set random number generator to default state for reproducibility
@@ -47,8 +47,8 @@ opts = struct('ab', [2 * ones(2, 1), [1; 0]], ... % Parameters for adaptive spec
               'func', 'db/(sc*ch)', ... % Evaluation function used for clustering performance
               'repa', 1); % Reparameterization parameter for optimization
 
-% Run the EW2LG algorithm to perform clustering on the selected dataset
-[criteria, Idx] = EW2LG(X, n_class, opts);
+% Run the GULE algorithm to perform clustering on the selected dataset
+[criteria, Idx] = GULE(X, n_class, opts);
 idx = Idx(:, end); % Extract the final clustering results from the algorithm output
 
 % Calculate performance metrics to evaluate the clustering results
