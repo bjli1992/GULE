@@ -64,7 +64,7 @@ Each demo script includes customizable parameters such as `example_id` (for data
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is under the Creative Commons Attribution 4.0 International copyright. 
 
 ## Contact
 
